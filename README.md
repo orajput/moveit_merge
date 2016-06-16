@@ -1,4 +1,5 @@
-# MoveIt!
+![](http://moveit.ros.org/wordpress/wp-content/uploads/2014/01/moveit-title-small.png)
+The MoveIt! Motion Planning Framework
 
 This is the new unified repository for MoveIt! code. For more information about MoveIt! see [moveit.ros.org](moveit.ros.org).
 
@@ -8,11 +9,9 @@ Status:
  * [![Build Status](http://build.ros.org/buildStatus/icon?job=Jsrc_uT__moveit__ubuntu_trusty__source)](http://build.ros.org/view/Jsrc_uT/job/Jsrc_uT__moveit__ubuntu_trusty__source/) ROS Buildfarm - Trusty Devel Source Build
  * [![Build Status](http://build.ros.org/buildStatus/icon?job=Jbin_uT64__moveit__ubuntu_trusty_amd64__binary)](http://build.ros.org/view/Jbin_uT64/job/Jbin_uT64__moveit__ubuntu_trusty_amd64__binary/) ROS Buildfarm - AMD64 Trusty Debian Build
 
-![](http://moveit.ros.org/wordpress/wp-content/uploads/2014/01/moveit-title-small.png)
-
 ## About The Merged Repos
 
-TODO
+The automated script for merging repos is located [here](https://github.com/davetcoleman/moveit_merge/tree/master). To copy your code changes on your own machine into the same unified structure, simply copy the previously separated packages as subfolders in this new unified repository.
 
 ## Install
 
