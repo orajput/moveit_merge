@@ -7,6 +7,7 @@ echo " inspired by: https://saintgimp.org/2013/01/22/merging-two-git-repositorie
 echo " Discussion: http://discourse.ros.org/t/migration-to-one-github-repo-for-moveit/266"
 echo "---------------------------------------"
 echo ""
+echo "NOTE - before proceeding make sure all the latest branches are synced with their previous branches i.e. indigo->jade->kinetic"
 
 export repo_names_to_merge=(
     moveit_core
@@ -90,9 +91,9 @@ for ((i=0;i<NUM_REPOS;i++)); do
 done
 
 # Create a travis CI for the root by copying moveit_core's
-cp moveit_core/.travis.yml .
-git add .travis.yml
-git commit -a -m "Duplicated moveit_core's .travis.yaml as master CI"
+# cp moveit_core/.travis.yml .
+# git add .travis.yml
+# git commit -a -m "Duplicated moveit_core's .travis.yaml as master CI"
 
 # User feedback
 echo "Finished combining repos"
