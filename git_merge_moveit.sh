@@ -18,7 +18,7 @@ export repo_names_to_merge=(
     moveit_commander
     moveit_ikfast
     moveit_resources
-    moveit_kinematics_tests
+    #moveit_kinematics_tests
     moveit_msgs
 )
 export repo_ssh_to_merge=(
@@ -30,7 +30,7 @@ export repo_ssh_to_merge=(
     git@github.com:ros-planning/moveit_commander.git
     git@github.com:ros-planning/moveit_ikfast.git
     git@github.com:ros-planning/moveit_resources.git
-    git@github.com:ros-planning/moveit_kinematics_tests.git
+    #git@github.com:ros-planning/moveit_kinematics_tests.git
     git@github.com:ros-planning/moveit_msgs.git
 )
 export repo_branch_to_merge=(
@@ -42,7 +42,7 @@ export repo_branch_to_merge=(
     kinetic-devel
     kinetic-devel
     master # resources
-    kinetic-devel
+    #kinetic-devel
     jade-devel # msgs
 )
 
@@ -82,23 +82,39 @@ for ((i=0;i<NUM_REPOS;i++)); do
     # Generate a list of subfolders to ignore when moving repos into their subfolder
     IGNORE_SUBFOLDERS="$IGNORE_SUBFOLDERS -I ${REPO_NAME}"
 
+    # Make sure there isn't already a folder within the repo named after its parent repo
+    RENAMED_FOLDER=0
+    if [ -d "${REPO_NAME}" ]; then
+        echo "Detected existance of folder named ${REPO_NAME} inside of ${REPO_NAME} - will temporarily rename folder"
+        #read -p "Press any key to continue"
+        # Control will enter here if $DIRECTORY exists.
+        git mv ${REPO_NAME} ${REPO_NAME}_TEMP_RENAME
+        RENAMED_FOLDER=1
+    fi
+
     # Move the repo files and folders into a subdirectory so they don’t collide with the other repo coming later
     mkdir ${REPO_NAME}
     ls -A ${IGNORE_SUBFOLDERS} | xargs -I % git mv % ${REPO_NAME}
+
+    # Rename folder back to original name
+    if [ "$RENAMED_FOLDER" -eq "1" ]; then
+        git mv ${REPO_NAME}/${REPO_NAME}_TEMP_RENAME ${REPO_NAME}/${REPO_NAME}
+        echo "Renamed ${REPO_NAME} inside of ${REPO_NAME} back to original name"
+        #read -p "Press any key to continue"
+    fi
 
     # Commit the move
     git commit -m "Moved ${REPO_NAME} into subdirectory"
 done
 
-# Create a travis CI for the root by copying moveit_core's
-# cp moveit_core/.travis.yml .
-# git add .travis.yml
-# git commit -a -m "Duplicated moveit_core's .travis.yaml as master CI"
-
 # User feedback
 echo "Finished combining repos"
 echo "Showing second level contents of combined repos:"
 tree -L 2
+
+# Copy in README.md and .travis.yml from this repo's template folder
+#cp ~/ros/standalone_software/moveit_merge/template/.* ~/ros/standalone_software/moveit_merge/template/* .
+#git add -A && git commit -a -m "Added README and travis config"
 
 # Push to Github
 #git push origin kinetic-devel -f
