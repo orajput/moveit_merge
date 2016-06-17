@@ -24,9 +24,20 @@ The automated script for merging repos is located [here](https://github.com/dave
 
 ### Build from Source
 
-To build this package, ``git clone`` this repo into a [catkin workspace](http://wiki.ros.org/catkin/Tutorials/create_a_workspace) and be sure to install necessary dependencies by running the following command in the root of your catkin workspace:
+To build this package in a new workspace:  TODO switch to kinetic
 
-    rosdep install -y --from-paths src --ignore-src --rosdistro kinetic
+    mkdir -p ws_moveit/src
+    cd ws_moveit/src
+    git clone https://github.com/davetcoleman/moveit.git
+    rosdep install --from-paths . --ignore-src --rosdistro indigo
+
+## Build with Docker in a Container
+
+After Docker is installed:
+
+    docker run -it ros:indigo
+    wget https://raw.githubusercontent.com/davetcoleman/moveit_merge/master/test_in_docker.sh
+    ./test_in_docker.sh
 
 ## Testing and Linting
 
