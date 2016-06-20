@@ -54,10 +54,8 @@ git init .
 git remote add origin git@github.com:davetcoleman/moveit.git
 
 echo "Before we do a merge, we have to have an initial commit, so we’ll make a dummy commit"
-touch DELETEME
-git add .
-git commit -m "Initial dummy commit"
-git co -b kinetic-devel
+git commit --allow-empty -m "Initial dummy commit"
+git checkout -b kinetic-devel
 git branch -d master
 
 IGNORE_SUBFOLDERS="-I .git"
@@ -72,12 +70,6 @@ for ((i=0;i<NUM_REPOS;i++)); do
     # Add a remote for and fetch the old repo, then merge
     git remote add -f ${REPO_NAME} ${REPO_URL}
     git merge ${REPO_NAME}/${REPO_BRANCH} -m "Merging repo ${REPO_NAME} into main unified repo"
-
-    # For first loop - clean up our dummy file because we don’t need it any more
-    if [ "$i" -eq "0" ]; then
-        git rm DELETEME
-        git commit -m "Clean up initial dummy file"
-    fi
 
     # Generate a list of subfolders to ignore when moving repos into their subfolder
     IGNORE_SUBFOLDERS="$IGNORE_SUBFOLDERS -I ${REPO_NAME}"
