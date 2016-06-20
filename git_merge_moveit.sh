@@ -19,7 +19,7 @@ export repo_names_to_merge=(
     moveit_ikfast
     moveit_resources
     #moveit_kinematics_tests
-    moveit_msgs
+    #moveit_msgs
 )
 export repo_ssh_to_merge=(
     git@github.com:ros-planning/moveit_core.git
@@ -31,7 +31,7 @@ export repo_ssh_to_merge=(
     git@github.com:ros-planning/moveit_ikfast.git
     git@github.com:ros-planning/moveit_resources.git
     #git@github.com:ros-planning/moveit_kinematics_tests.git
-    git@github.com:ros-planning/moveit_msgs.git
+    #git@github.com:ros-planning/moveit_msgs.git
 )
 export repo_branch_to_merge=(
     jade-devel #core TODO sync kinetic-devel to jade-devel
@@ -43,7 +43,7 @@ export repo_branch_to_merge=(
     kinetic-devel
     master # resources
     #kinetic-devel
-    jade-devel # msgs
+    #jade-devel # msgs
 )
 
 NUM_REPOS=${#repo_names_to_merge[@]}
