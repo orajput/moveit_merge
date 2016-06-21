@@ -1,9 +1,5 @@
-# This file is primarilly intended for the users who want to build MoveIt! from source.
-# Used with wstool, users can download source of all packages of MoveIt!.
-- git:
-    local-name: moveit
-    uri: https://github.com/davetcoleman/moveit.git
-    version: kinetic-devel
+# This file is intended to be used by Travis. More info https://github.com/ros-industrial/industrial_ci/blob/master/README.rst#id27
+# Those who want to download all source of MoveIt! can instead use ./moveit.rosinstall file.
 - git:
     local-name: moveit_docs
     uri: https://github.com/ros-planning/moveit_docs.git

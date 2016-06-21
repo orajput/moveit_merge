@@ -4,11 +4,19 @@ The MoveIt! Motion Planning Framework
 
 This is the new unified repository for MoveIt! code. For more information about MoveIt! see [moveit.ros.org](moveit.ros.org).
 
-Status:
+Travis - Continuous Integration | Coveralls - Coverage
+------------------------------- | --------------------
+[![Build Status](https://travis-ci.org/davetcoleman/moveit.svg)](https://travis-ci.org/davetcoleman/moveit) | [![Coverage Status](https://coveralls.io/repos/github/davetcoleman/moveit/badge.svg?branch=kinetic-devel)](https://coveralls.io/github/davetcoleman/moveit?branch=kinetic-devel)
 
- * [![Build Status](https://travis-ci.org/davetcoleman/moveit.svg)](https://travis-ci.org/davetcoleman/moveit) Travis - Continuous Integration
- * [![Build Status](http://build.ros.org/buildStatus/icon?job=Jsrc_uT__moveit__ubuntu_trusty__source)](http://build.ros.org/view/Jsrc_uT/job/Jsrc_uT__moveit__ubuntu_trusty__source/) ROS Buildfarm - Trusty Devel Source Build
- * [![Build Status](http://build.ros.org/buildStatus/icon?job=Jbin_uT64__moveit__ubuntu_trusty_amd64__binary)](http://build.ros.org/view/Jbin_uT64/job/Jbin_uT64__moveit__ubuntu_trusty_amd64__binary/) ROS Buildfarm - AMD64 Trusty Debian Build
+ROS Buildfarm | Trusty Devel Source | AMD64 Trusty Debian
+------------- | ------------------- | -------------------
+moveit_core | [![Build Status](http://build.ros.org/buildStatus/icon?job=Jsrc_uT__moveit_core__ubuntu_trusty__source)](http://build.ros.org/view/Jsrc_uT/job/Jsrc_uT__moveit_core__ubuntu_trusty__source/) | [![Build Status](http://build.ros.org/buildStatus/icon?job=Jbin_uT64__moveit_core__ubuntu_trusty_amd64__binary)](http://build.ros.org/view/Jbin_uT64/job/Jbin_uT64__moveit_core__ubuntu_trusty_amd64__binary/)
+moveit_ros | [![Build Status](http://build.ros.org/buildStatus/icon?job=Jsrc_uT__moveit_ros__ubuntu_trusty__source)](http://build.ros.org/view/Jsrc_uT/job/Jsrc_uT__moveit_ros__ubuntu_trusty__source/) | [![Build Status](http://build.ros.org/buildStatus/icon?job=Jbin_uT64__moveit_ros__ubuntu_trusty_amd64__binary)](http://build.ros.org/view/Jbin_uT64/job/Jbin_uT64__moveit_ros__ubuntu_trusty_amd64__binary/)
+moveit_planners | [![Build Status](http://build.ros.org/buildStatus/icon?job=Jsrc_uT__moveit_planners__ubuntu_trusty__source)](http://build.ros.org/view/Jsrc_uT/job/Jsrc_uT__moveit_planners__ubuntu_trusty__source/) | [![Build Status](http://build.ros.org/buildStatus/icon?job=Jbin_uT64__moveit_planners__ubuntu_trusty_amd64__binary)](http://build.ros.org/view/Jbin_uT64/job/Jbin_uT64__moveit_planners__ubuntu_trusty_amd64__binary/)
+moveit_setup_assistant | [![Build Status](http://build.ros.org/buildStatus/icon?job=Jsrc_uT__moveit_setup_assistant__ubuntu_trusty__source)](http://build.ros.org/view/Jsrc_uT/job/Jsrc_uT__moveit_setup_assistant__ubuntu_trusty__source/) | [![Build Status](http://build.ros.org/buildStatus/icon?job=Jbin_uT64__moveit_setup_assistant__ubuntu_trusty_amd64__binary)](http://build.ros.org/view/Jbin_uT64/job/Jbin_uT64__moveit_setup_assistant__ubuntu_trusty_amd64__binary/)
+moveit_plugins | [![Build Status](http://build.ros.org/buildStatus/icon?job=Jsrc_uT__moveit_plugins__ubuntu_trusty__source)](http://build.ros.org/view/Jsrc_uT/job/Jsrc_uT__moveit_plugins__ubuntu_trusty__source/) | [![Build Status](http://build.ros.org/buildStatus/icon?job=Jbin_uT64__moveit_plugins__ubuntu_trusty_amd64__binary)](http://build.ros.org/view/Jbin_uT64/job/Jbin_uT64__moveit_plugins__ubuntu_trusty_amd64__binary/)
+moveit_ikfast | [![Build Status](http://build.ros.org/buildStatus/icon?job=Jsrc_uT__moveit_ikfast__ubuntu_trusty__source)](http://build.ros.org/view/Jsrc_uT/job/Jsrc_uT__moveit_ikfast__ubuntu_trusty__source/) | [![Build Status](http://build.ros.org/buildStatus/icon?job=Jbin_uT64__moveit_ikfast__ubuntu_trusty_amd64__binary)](http://build.ros.org/view/Jbin_uT64/job/Jbin_uT64__moveit_ikfast__ubuntu_trusty_amd64__binary/)
+moveit_commander | [![Build Status](http://build.ros.org/buildStatus/icon?job=Jsrc_uT__moveit_commander__ubuntu_trusty__source)](http://build.ros.org/view/Jsrc_uT/job/Jsrc_uT__moveit_commander__ubuntu_trusty__source/) | [![Build Status](http://build.ros.org/buildStatus/icon?job=Jbin_uT64__moveit_commander__ubuntu_trusty_amd64__binary)](http://build.ros.org/view/Jbin_uT64/job/Jbin_uT64__moveit_commander__ubuntu_trusty_amd64__binary/)
 
 ## About The Merged Repos
 
@@ -30,16 +38,19 @@ To build this package in a new workspace:  TODO switch to kinetic
 
     mkdir -p ws_moveit/src
     cd ws_moveit/src
-    git clone https://github.com/davetcoleman/moveit.git
+    wstool init .
+    wstool merge https://raw.githubusercontent.com/davetcoleman/moveit/kinetic-devel/moveit.rosinstall
+    wstool update
     rosdep install --from-paths . --ignore-src --rosdistro jade
+    cd ..
+    catkin build
 
 ## Build with Docker in a Container
 
-After Docker is installed:
+After Docker is installed: TODO currently broken
 
     docker run -it ros:jade
     wget https://raw.githubusercontent.com/davetcoleman/moveit_merge/master/test_in_docker.sh
-    ./test_in_docker.sh
 
 ## Testing and Linting
 
