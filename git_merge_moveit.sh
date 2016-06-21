@@ -42,6 +42,8 @@ export repo_branch_to_merge=(
 NUM_REPOS=${#repo_names_to_merge[@]}
 echo "Merging ${NUM_REPOS} repos"
 
+set -x          # activate debugging from here
+
 echo "Create the new repository"
 git init .
 git remote add origin git@github.com:davetcoleman/moveit.git
@@ -103,3 +105,5 @@ tree -L 2
 
 # Push to Github
 #git push origin kinetic-devel -f
+
+set +x          # stop debugging from here
