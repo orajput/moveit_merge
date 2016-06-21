@@ -19,14 +19,14 @@ export repo_names_to_merge=(
     moveit_resources
 )
 export repo_ssh_to_merge=(
-    git@github.com:ros-planning/moveit_core.git
-    git@github.com:ros-planning/moveit_ros.git
-    git@github.com:ros-planning/moveit_planners.git
-    git@github.com:ros-planning/moveit_plugins.git
-    git@github.com:ros-planning/moveit_setup_assistant.git
-    git@github.com:ros-planning/moveit_commander.git
-    git@github.com:ros-planning/moveit_ikfast.git
-    git@github.com:ros-planning/moveit_resources.git
+    http://github.com/ros-planning/moveit_core.git
+    http://github.com/ros-planning/moveit_ros.git
+    http://github.com/ros-planning/moveit_planners.git
+    http://github.com/ros-planning/moveit_plugins.git
+    http://github.com/ros-planning/moveit_setup_assistant.git
+    http://github.com/ros-planning/moveit_commander.git
+    http://github.com/ros-planning/moveit_ikfast.git
+    http://github.com/ros-planning/moveit_resources.git
 )
 export repo_branch_to_merge=(
     jade-devel #core TODO sync kinetic-devel to jade-devel
@@ -46,7 +46,7 @@ set -x          # activate debugging from here
 
 echo "Create the new repository"
 git init .
-git remote add origin git@github.com:davetcoleman/moveit.git
+git remote add origin http://github.com/davetcoleman/moveit.git
 
 echo "Before we do a merge, we have to have an initial commit, so we’ll make a dummy commit"
 git commit --allow-empty -m "Initial dummy commit"
