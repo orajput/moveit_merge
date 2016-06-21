@@ -90,12 +90,22 @@ for ((i=0;i<NUM_REPOS;i++)); do
         #read -p "Press any key to continue"
     fi
 
+
     # Commit the move
     git commit -m "Moved ${REPO_NAME} into subdirectory"
 
     # Cleanup the temporary remote
     git remote remove ${REPO_NAME}
 done
+
+# Delete package's .gitignore and travis config if it exists
+for ((i=0;i<NUM_REPOS;i++)); do
+    REPO_NAME=${repo_names_to_merge[$i]}
+    rm ${REPO_NAME}/.gitignore
+    rm ${REPO_NAME}/.travis.yml
+done
+
+git commit -a -m "Deleted duplicate gitignore and travis files"
 
 # User feedback
 echo "Finished combining repos"
