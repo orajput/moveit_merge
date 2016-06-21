@@ -92,6 +92,9 @@ for ((i=0;i<NUM_REPOS;i++)); do
 
     # Commit the move
     git commit -m "Moved ${REPO_NAME} into subdirectory"
+
+    # Cleanup the temporary remote
+    git remote remove ${REPO_NAME}
 done
 
 # User feedback
@@ -99,9 +102,12 @@ echo "Finished combining repos"
 echo "Showing second level contents of combined repos:"
 tree -L 2
 
+# Get directory of moveit_merge
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 # Copy in README.md and .travis.yml from this repo's template folder
-#cp ~/ros/standalone_software/moveit_merge/template/.* ~/ros/standalone_software/moveit_merge/template/* .
-#git add -A && git commit -a -m "Added README and travis config"
+cp $SCRIPT_DIR/template/.* $SCRIPT_DIR/template/* .
+git add -A && git commit -a -m "Added README, travis CI, and rosinstall file"
 
 # Push to Github
 #git push origin kinetic-devel -f
