@@ -14,6 +14,8 @@ Status:
 
 The automated script for merging repos is located [here](https://github.com/davetcoleman/moveit_merge/tree/master). To copy your code changes on your own machine into the same unified structure, simply copy the previously separated packages as subfolders in this new unified repository.
 
+Currently this repo build in Jade but will soon build in Kinetic
+
 ## Install
 
 ### Ubuntu Debian
@@ -29,13 +31,13 @@ To build this package in a new workspace:  TODO switch to kinetic
     mkdir -p ws_moveit/src
     cd ws_moveit/src
     git clone https://github.com/davetcoleman/moveit.git
-    rosdep install --from-paths . --ignore-src --rosdistro indigo
+    rosdep install --from-paths . --ignore-src --rosdistro jade
 
 ## Build with Docker in a Container
 
 After Docker is installed:
 
-    docker run -it ros:indigo
+    docker run -it ros:jade
     wget https://raw.githubusercontent.com/davetcoleman/moveit_merge/master/test_in_docker.sh
     ./test_in_docker.sh
 
