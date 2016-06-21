@@ -7,7 +7,6 @@ echo " inspired by: https://saintgimp.org/2013/01/22/merging-two-git-repositorie
 echo " Discussion: http://discourse.ros.org/t/migration-to-one-github-repo-for-moveit/266"
 echo "---------------------------------------"
 echo ""
-echo "NOTE - before proceeding make sure all the latest branches are synced with their previous branches i.e. indigo->jade->kinetic"
 
 export repo_names_to_merge=(
     moveit_core
@@ -18,8 +17,6 @@ export repo_names_to_merge=(
     moveit_commander
     moveit_ikfast
     moveit_resources
-    #moveit_kinematics_tests
-    #moveit_msgs
 )
 export repo_ssh_to_merge=(
     git@github.com:ros-planning/moveit_core.git
@@ -30,8 +27,6 @@ export repo_ssh_to_merge=(
     git@github.com:ros-planning/moveit_commander.git
     git@github.com:ros-planning/moveit_ikfast.git
     git@github.com:ros-planning/moveit_resources.git
-    #git@github.com:ros-planning/moveit_kinematics_tests.git
-    #git@github.com:ros-planning/moveit_msgs.git
 )
 export repo_branch_to_merge=(
     jade-devel #core TODO sync kinetic-devel to jade-devel
@@ -42,8 +37,6 @@ export repo_branch_to_merge=(
     kinetic-devel
     kinetic-devel
     master # resources
-    #kinetic-devel
-    #jade-devel # msgs
 )
 
 NUM_REPOS=${#repo_names_to_merge[@]}
