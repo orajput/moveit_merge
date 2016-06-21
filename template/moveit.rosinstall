@@ -1,0 +1,5 @@
+- git: { local-name: ros-planning/moveit_docs, uri: https://github.com/ros-planning/moveit_docs.git }
+- git: { local-name: ros-planning/moveit_msgs, uri: https://github.com/ros-planning/moveit_msgs.git }
+- git: { local-name: ros-planning/moveit_robots, uri: https://github.com/ros-planning/moveit_robots.git }
+- git: { local-name: ros-planning/srdfdom, uri: https://github.com/ros-planning/srdfdom.git }
+- git: { local-name: ros-planning/warehouse_ros, uri: https://github.com/ros-planning/warehouse_ros.git }
