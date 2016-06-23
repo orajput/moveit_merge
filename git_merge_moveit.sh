@@ -17,6 +17,7 @@ export repo_names_to_merge=(
     moveit_commander
     moveit_ikfast
     moveit_resources
+    moveit_experimental
 )
 export repo_ssh_to_merge=(
     http://github.com/ros-planning/moveit_core.git
@@ -27,6 +28,7 @@ export repo_ssh_to_merge=(
     http://github.com/ros-planning/moveit_commander.git
     http://github.com/ros-planning/moveit_ikfast.git
     http://github.com/ros-planning/moveit_resources.git
+    http://github.com/ros-planning/moveit_experimental.git
 )
 export repo_branch_to_merge=(
     jade-devel #core TODO sync kinetic-devel to jade-devel
@@ -37,6 +39,7 @@ export repo_branch_to_merge=(
     kinetic-devel
     kinetic-devel
     master # resources
+    master # experimental
 )
 
 NUM_REPOS=${#repo_names_to_merge[@]}
