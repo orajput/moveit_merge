@@ -31,13 +31,13 @@ export repo_ssh_to_merge=(
     http://github.com/ros-planning/moveit_experimental.git
 )
 export repo_branch_to_merge=(
-    jade-devel #core TODO sync kinetic-devel to jade-devel
+    kinetic-devel # core
     jade-devel #ros
-    jade-devel #planners
+    kinetic-devel #planners
     jade-devel #plugins
     jade-devel #setup assistant
-    kinetic-devel
-    kinetic-devel
+    jade-devel #commander
+    kinetic-devel #ikfast
     master # resources
     master # experimental
 )
